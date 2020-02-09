@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+      <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=text],input[type=text]
+{
+  width: 15%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background: #f1f1f1;
+
+}
+
+/* Set a style for button */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 15%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+<title> Calculator</title>
+</style>
+
+    <title>Calculator</title>
+
+
+</head>
+<body>
+<form method="post">
+    
+        <h1>Calculator</h1>
+        Enter First Number: &nbsp;&nbsp;<input type="text" id="baseId" placeholder="Enter First Number" name="first" required><br><br><br>
+        Enter Second Number:&nbsp;&nbsp;<input type="text" id="exponentId" placeholder="Enter Second Number" name="second" required><br><br><br>
+        &nbsp;&nbsp;<button type="submit">Calculate Result</button> &nbsp;&nbsp;
+        Result:&nbsp;&nbsp;<input type="text" id="result">
+</form>
+
+
+  <script>
+$(document).ready(function(){
+  $("#submit").click(function(){
+
+
+    var result=document.getElementById("result").value
+console.log(result)
+ var baseid=document.getElementById("baseId").value
+ var exponentid=document.getElementById("exponentId").value
+
+   
+url="http:localhost:8080/calculator/calculate"
+data=JSON.stringify({
+"baseValue":baseid,
+"exponentValue":exponentid})
+
+
+$.ajax({
+  url:url,
+  type:"POST",
+  data:data,
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+  success: function(data){
+   
+
+document.getElementById("result").value=data;
+  }
+})
+
+  });
+});
+
+</script>    
+</body>
+</html>

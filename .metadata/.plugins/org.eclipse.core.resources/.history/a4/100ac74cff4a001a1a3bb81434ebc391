@@ -1,0 +1,30 @@
+package com.calculator.service;
+
+import org.springframework.stereotype.Service;
+
+import com.calculator.dto.PowerFunctionNumberDTO;
+
+@Service
+public class PowerFunctionService implements IPowerFunction 
+{
+
+	@Override
+	public int calculator(PowerFunctionNumberDTO numberDTO) 
+	{
+		int baseValue = numberDTO.getBaseValue();
+		int exponentValue = numberDTO.getExponentValue();
+
+		System.out.println(baseValue);
+		System.out.println(exponentValue);
+
+		int resultValue = 1;
+
+		for (int i = 1; i <= exponentValue; i++) 
+		{
+			resultValue = resultValue * baseValue;
+		}
+		System.out.println(resultValue);
+		return resultValue;
+	}
+
+}

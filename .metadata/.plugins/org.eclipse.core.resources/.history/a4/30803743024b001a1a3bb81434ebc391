@@ -1,0 +1,91 @@
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=text],input[type=text]
+{
+  width: 15%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background: #f1f1f1;
+
+}
+
+/* Set a style for button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 15%;
+}
+
+input:hover {
+  opacity: 0.8;
+}
+<title> Calculator</title>
+</style>
+
+    <title>Calculator</title>
+
+<body>
+
+Base Number:      <input type="text" id="baseNumber" name="base"><br>
+
+Exponent Number:  <input type="text" id="exponentNumber" name="exponent"><br>
+<input type="text" id="result" name="result">
+
+<input type="submit" id="submit" value="Calculate Result">
+
+
+<script>
+$(document).ready(function(){
+  $("#submit").click(function(){
+
+
+    var result=document.getElementById("result").value
+console.log(result)
+ var baseNumber=document.getElementById("baseNumber").value
+ var exponentNumber=document.getElementById("exponentNumber").value
+
+   
+url="http:localhost:8080/calculator/calculate"
+data=JSON.stringify({
+"firstNumber":baseNumber,
+"secondNumber":exponentNumber})
+
+
+$.ajax({
+  url:url,
+  type:"POST",
+  data:data,
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+  success: function(data){
+   
+
+document.getElementById("result").value=data;
+  }
+})
+
+  });
+});
+
+</script>
+
+
+
+
+
+</body>
+</html>
