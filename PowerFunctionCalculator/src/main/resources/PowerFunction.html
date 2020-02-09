@@ -5,7 +5,7 @@
 </head>
 <style>
 table {
-  width:50%;
+  width:60%;
 }
 table{
   border: 1px solid black;
@@ -27,11 +27,11 @@ table{
 <table align="center">
   <tr>
     <th>Enter Base Number:</th>
-    <th><input type:"text" id="baseNumber" name="base"></th> 
+    <th><input type:"text" id="baseNumber" name="base" required></th> 
   </tr>
   <tr>
     <th>Enter Exponent Number:</th>
-    <td><input type:"text" id="exponentNumber" name="exponent"></td>
+    <td><input type:"text" id="exponentNumber" name="exponent" required></td>
   </tr>
   <tr>
     <td><input type="submit" id="submit" value="Calculate Result"></td>
@@ -73,12 +73,6 @@ document.getElementById("result").value=data;
 
   });
 });
-
 </script>
-
-
-
-
-
 </body>
 </html>
